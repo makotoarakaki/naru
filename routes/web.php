@@ -11,6 +11,8 @@
 |
 */
 
+Route::post('products/{product}/reviews', 'ReviewController@store');
+
 Route::resource('products', 'ProductController');
 
 Auth::routes(['verify' => true]);
