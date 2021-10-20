@@ -7,101 +7,50 @@
         @endcomponent
     </div>
     <div class="col-9">
-        <h1>直近の予定</h1>
+        <h1>おすすめ商品</h1>
         <div class="row">
+            @foreach ($recommend_products as $recommend_product)
             <div class="col-4">
-                <a href="#">
-                    <img src="{{ asset('img/makoto.jpg') }}" class="most-recent img-thumbnail">
+                <a href="/products/{{ $recommend_product->id }}">
+                @if ($recommend_product->image !== "")
+                    <img src="{{ asset('storage/products/'.$recommend_product->image) }}" class="img-thumbnail">
+                @else
+                    <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
+                @endif
                 </a>
                 <div class="row">
                     <div class="col-12">
                         <p class="samazon-product-label mt-2">
-                            <label>新垣誠</label>
+                            {{ $recommend_product->name }}<br>
+                            <label>￥{{ $recommend_product->price }}</label>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <a href="#">
-                    <img src="{{ asset('img/makoto.jpg')}}" class="most-recent img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            <label>新垣誠2</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <a href="#">
-                    <img src="{{ asset('img/makoto.jpg')}}" class="most-recent img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            <label>新垣誠3</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
 
-        <h1>お客様一覧</h1>
+        <h1>新着商品</h1>
         <div class="row">
+            @foreach ($recently_products as $recently_product)
             <div class="col-3">
-                <a href="#">
-                    <img src="{{ asset('img/panasonic.png')}}" class="img-thumbnail">
+                <a href="/products/{{ $recently_product->id }}">
+                @if ($recently_product->image !== "")
+                   <img src="{{ asset('storage/products/'.$recently_product->image) }}" class="img-thumbnail">
+                @else
+                   <img src="{{ asset('img/man.png')}}" class="img-thumbnail">
+                @endif
                 </a>
                 <div class="row">
                     <div class="col-12">
                         <p class="samazon-product-label mt-2">
-                            <label>お名前１</label>
+                            {{ $recently_product->name }}<br>
+                            <label>￥{{ $recently_product->price }}</label>
                         </p>
                     </div>
                 </div>
             </div>
-
-            <div class="col-3">
-                <a href="#">
-                    <img src="{{ asset('img/sofa.png')}}" class="img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            <label>お名前２</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-3">
-                <a href="#">
-                    <img src="{{ asset('img/item.png')}}" class="img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            <label>お名前３</labiel>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-3">
-                <a href="#">
-                    <img src="{{ asset('img/goods.png')}}" class="img-thumbnail">
-                </a>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="samazon-product-label mt-2">
-                            <label>お名前４</label>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
