@@ -15,4 +15,13 @@ class WebController extends Controller
 
         return view('web.index', compact('major_category_names', 'categories'));
     }
+
+    public function moto()
+    {
+        $categories = Category::all()->sortBy('major_category_name');
+
+        $major_category_names = Category::pluck('major_category_name')->unique();
+
+        return view('web.moto', compact('major_category_names', 'categories'));
+    }
 }

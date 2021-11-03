@@ -249,3 +249,23 @@ img.most-recent {
   border-radius: 2px;
   background-color: #d94b0e;
 }
+
+/*　Googleカレンダー埋め込み  */
+
+.g-calendar {
+  text-align:center;
+  }
+
+.g-calendar iframe {
+  width:100%;
+  max-width:800px;
+  height:200px;
+  }
+
+@media (min-width: 768px) {
+  
+.g-calendar iframe {
+  height:600px;
+  }
+      
+}

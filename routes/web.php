@@ -11,6 +11,7 @@
 |
 */
 Route::get('/', 'WebController@index');
+Route::get('/moto', 'WebController@moto');
 
 Route::get('users/mypage', 'UserController@mypage')->name('mypage');
 Route::get('users/mypage/edit', 'UserController@edit')->name('mypage.edit');

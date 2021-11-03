@@ -20,6 +20,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/original.css')}}" rel="stylesheet">
+    <link href="/bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
