@@ -11,6 +11,7 @@
 |
 */
 Route::get('/', 'WebController@index');
+Route::post('/add_schedule', 'WebController@add_schedule')->name('add_schedule');
 Route::get('/moto', 'WebController@moto');
 
 Route::get('users/mypage', 'UserController@mypage')->name('mypage');

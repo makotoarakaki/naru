@@ -131,20 +131,24 @@
                                             <div class="text-center">
                                                 <h1 class="h4 text-gray-900 mb-4">予定を登録</h1>
                                             </div>
-                                            <form class="user">
+                                            <form action="{{ route('add_schedule') }}" method="POST" class="user">
+                                                {{ csrf_field() }}
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="schedule" placeholder="日付を選択">
+                                                    <div class="input-group date" id="datePicker" data-target-input="nearest">                                                        
+                                                        <input type="datetime" name="schedule" required class="form-control form-control-sm datetimepicker-input" data-target="#datePicker" placeholder="日程を入力"/>
+                                                        <div class="input-group-append" data-target="#datePicker" data-toggle="datetimepicker">
+                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                                    <input type="text" name="best" class="form-control form-control-user" id="exampleInputEmail"
                                                         placeholder="今月の意気込み">
                                                 </div>
                                                 <div class="form-group">
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="特に力を入れたいこと"></textarea>
+                                                    <textarea name="power" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="特に力を入れたいこと"></textarea>
                                                 </div>
-                                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                                    予約する
-                                                </a>
+                                                <button type="submit" class="btn btn-primary btn-user btn-block">予約する</button>
                                             </form>
                                         </div>                                        
                                     </div>
@@ -162,7 +166,7 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body g-calendar">
-                                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FTokyo&showTitle=0&showTz=0&showPrint=0&showCalendars=0&src=YXJha2FraWNvbnN1bEBnbWFpbC5jb20&src=dXNnajd1aTl2YW1jMWc1bW52czMwdmdpMGdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=amEuamFwYW5lc2UjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%23616161&color=%2333B679&color=%230B8043" style="border:solid 1px #777" frameborder="0" scrolling="no"></iframe>
+                                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FTokyo&showPrint=0&showCalendars=0&showDate=1&showNav=1&src=YXJha2FraWNvbnN1bEBnbWFpbC5jb20&src=bDBhcHAzOTJ1bm03YTdmaGR2MHMwZ3VmdW9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=amEuamFwYW5lc2UjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%23F6BF26&color=%2333B679&color=%230B8043" style="border:solid 1px #777" frameborder="0" scrolling="no"></iframe>                                    
                                 </div>
                             </div>
                         </div>
@@ -387,15 +391,15 @@
     <script src="js/demo/chart-pie-demo.js"></script>
 
     <!-- datepicker -->
-    <script src="/bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js" defer></script>
-    <script src="/bootstrap-datepicker-1.9.0-dist/locales/bootstrap-datepicker.ja.min.js" defer></script>
+    <!-- Tempus Dominus Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js" integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/locale/ja.min.js" integrity="sha512-rElveAU5iG1CzHqi7KbG1T4DQIUCqhitISZ9nqJ2Z4TP0z4Aba64xYhwcBhHQMddRq27/OKbzEFZLOJarNStLg==" crossorigin="anonymous"></script>
+    <!-- Moment.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script>
     $(function(){
-        $('#schedule').datepicker({
-            language:'ja',
-            format: 'yyyy/mm/dd'
-        });
+        $('#schedule').datetimepicker({locale: 'ja', dayViewHeaderFormat: 'YYYY年M月' ,format: 'YYYY/MM/DD'});
     });
     </script>
 </body>
