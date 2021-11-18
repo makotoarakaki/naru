@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Schedule;
+use App\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Schedule $schedule)
     {
-        return view('dashboard.index');
+        // $user = User::find(Auth::user()->id);
+        // $user_name = $user->name;
+
+        $schedules = Schedule::all();
+
+        //$schedules = Schedule::where('user.id', 'user_id')->get();
+        return view('dashboard.index', compact('schedules'));
     }
 }

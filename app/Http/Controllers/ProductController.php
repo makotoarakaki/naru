@@ -50,7 +50,6 @@ class ProductController extends Controller
 
     public function favorite(Product $product)
     {
-        //$user = Auth::user();
         $user = User::find(Auth::user()->id);
 
         if ($user->hasFavorited($product)) {

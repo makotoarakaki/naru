@@ -29,7 +29,7 @@
                   @endforeach
               </select>
           </div>
-          <div class="form-inline mt-4 mb-4 row">
+          <!-- <div class="form-inline mt-4 mb-4 row">
               <label class="col-2 d-flex justify-content-start">画像</label>
               @if ($product->image !== null)
                  <img src="{{ asset('storage/products/'.$product->image) }}" id="product-image-preview" class="img-fluid w-25">
@@ -41,8 +41,8 @@
                   <label for="product-image" class="btn samazon-submit-button">画像を選択</label>
                   <input type="file" name="image" id="product-image" onChange="handleImage(this.files)" style="display: none;">
               </div>
-          </div>
-          <div class="form-inline mt-4 mb-4 row">
+          </div> -->
+          <!-- <div class="form-inline mt-4 mb-4 row">
               <label for="product-price" class="col-2 d-flex justify-content-start">オススメ?</label>
               @if ($product->recommend_flag)
               <input type="checkbox" name="recommend" id="product-recommend" class="samazon-check-box" checked>
@@ -57,7 +57,7 @@
               @else
               <input type="checkbox" name="carriage" id="product-carriage" class="samazon-check-box">
               @endif
-          </div>
+          </div> -->
           <div class="form-inline mt-4 mb-4 row">
               <label for="product-description" class="col-2 d-flex justify-content-start align-self-start">商品説明</label>
               <textarea name="description" id="product-description" class="form-control col-8" rows="10">{{ $product->description }}</textarea>
@@ -68,7 +68,7 @@
       </form>
   
       <div class="d-flex justify-content-end">
-          <a href="/products">商品一覧に戻る</a>
+          <a href="/dashboard/products">商品一覧に戻る</a>
       </div>
   </div>
 
