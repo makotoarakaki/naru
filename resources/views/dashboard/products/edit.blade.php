@@ -29,6 +29,10 @@
                   @endforeach
               </select>
           </div>
+          <div class="form-inline mt-4 mb-4 row">
+              <label for="product-deposit" class="col-2 d-flex justify-content-start">支払い済</label>
+              <input type="number" name="deposit" id="product-deposit" class="form-control col-8" value="{{ $product->deposit }}">
+          </div>
           <!-- <div class="form-inline mt-4 mb-4 row">
               <label class="col-2 d-flex justify-content-start">画像</label>
               @if ($product->image !== null)

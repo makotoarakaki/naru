@@ -63,8 +63,10 @@ class MajorCategoryController extends Controller
      * @param  \App\MajorCategory  $majorCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(MajorCategory $majorCategory)
+    public function edit($id)
     {
+        $major_category = MajorCategory::find($id);
+
         return view('dashboard.major_categories.edit', compact('major_category'));
     }
 
