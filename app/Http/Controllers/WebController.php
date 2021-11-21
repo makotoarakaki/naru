@@ -24,15 +24,6 @@ class WebController extends Controller
         }
     }
 
-    public function moto()
-    {
-        $categories = Category::all()->sortBy('major_category_name');
-
-        $major_category_names = Category::pluck('major_category_name')->unique();
-
-        return view('web.moto', compact('major_category_names', 'categories'));
-    }
-
     public function add_schedule(Request $request) {
 
         // Googleカレンダーへ日程追加
@@ -47,11 +38,21 @@ class WebController extends Controller
 
          // Scheduleテーブルに情報を登録
         $schedule = new Schedule();
-        $schedule->schedule = $request->input('schedule');
+        // 複数使うため変数に格納する
+        $sschedule = $request->input('schedule');
+
+        $schedule->schedule = $sschedule;
         $schedule->best = $request->input('best');
         $schedule->power = $request->input('power');
         $schedule->user_id = Auth::user()->id;
         $schedule->save();
+
+        // お客様への確認メール送信
+        $send_reception = app()->make('App\Http\Controllers\SendReceptionController');
+        $send_reception->reception($sschedule);
+        // 管理者へのメール送信
+        $send_reserve = app()->make('App\Http\Controllers\MailReserveController');
+        $send_reserve->reserve($sschedule);
 
         return view('web.index', compact('major_category_names', 'categories'));
     }
