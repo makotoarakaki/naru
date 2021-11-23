@@ -38,7 +38,7 @@
               <textarea name="description" id="product-description" class="form-control col-8" rows="10"></textarea>
           </div>
           <div class="d-flex justify-content-end">
-              <button type="submit" class="w-25 btn btn-danger">商品を登録</button>
+              <button type="submit" class="w-25 btn samazon-submit-button">商品を登録</button>
           </div>
       </form>
   

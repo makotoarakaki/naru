@@ -18,17 +18,18 @@
         <input type="hidden" name="user_id" value="{{ $product->user_id }}">
      </form>
       <div class="form-inline mt-4 mb-4 row">
-      <table class="table table-hover">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>No.</th><th>日付</th><th>入金額</th>
           </tr>
         </thead>
         <tbody>
+        <?php  $cnt =1;  ?>
         @foreach ($payments as $payment)
         <tr>
             <td>
-              {{$payment->id}}    
+              {{ $cnt }}    
           </td>
           <td>
               {{$payment->created_at->format('Y年m月d日')}}
@@ -37,11 +38,15 @@
               {{$payment->deposit}}
           </td>
         </tr>
+        <?php  $cnt++;  ?>
         @endforeach
         </tbody>
       </table>
       <div class="d-flex justify-content-end">
           <a href="/dashboard/products">商品一覧に戻る</a>
+      </div>
+      <div class="d-flex justify-content-end mx-5">
+          <a href="/payments/{{$product->user_id}}">入金一覧</a>
       </div>
   </div>
 @endsection 

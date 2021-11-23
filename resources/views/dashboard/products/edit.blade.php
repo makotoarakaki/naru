@@ -75,33 +75,15 @@
               <button type="submit" class="w-25 btn samazon-submit-button">更新</button>
           </div>
       </form>
-      <!-- <div class="d-flex flex-row bd-highlight mt-3 mb-3">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>金 額</th><th>入金済</th><th>残額</th>
-                </tr>
-            </thead>
-            <tbody>
-                //@if(!is_null($payment))
-                <tr>
-                    <td>
-                        //{{ number_format($payment->price) }}
-                    </td>
-                    <td>
-                        //{{ number_format($payment->deposit) }}
-                    </td>
-                    <td>
-                        //{{ number_format($payment->price - $payment->deposit) }}
-                    </td>
-                </tr>
-                //@endif
-            </tbody>
-        </table>
-      </div> -->
-      <div class="d-flex justify-content-end">
-          <a href="/dashboard/products">商品一覧に戻る</a>
+      <div class="row">
+        <div class="justify-content-end">
+            <a href="/dashboard/products">商品一覧に戻る</a>
+        </div>
+        <div class="justify-content-end mx-5">
+            <a href="/payments/{{$product->user_id}}">入金一覧</a>
+        </div>
       </div>
+     
   </div>
 
  <script type="text/javascript">

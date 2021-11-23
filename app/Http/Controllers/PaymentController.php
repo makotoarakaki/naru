@@ -46,7 +46,7 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $payments = new Payment();
-        $payments->price = $request->input('price');
+        //$payments->price = $request->input('price');
         $payments->deposit = $request->input('deposit');
         $payments->product_id = $request->input('product_id');
         $payments->user_id = $request->input('user_id');
@@ -64,9 +64,12 @@ class PaymentController extends Controller
      */
     public function show($user_id)
     {
+        $product = Product::where('user_id', $user_id)->firstOrFail();;
+        $price = $product->price;
+        
         $payments = Payment::all()->where('user_id', $user_id);
-dd($user_id);
-        return view('payments.show', compact('payments'));
+
+        return view('payments.show', compact('payments', 'price'));
     }
 
 }
