@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Product;
 use App\Category;
+use App\Payment;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
@@ -54,7 +56,9 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
-        return view('dashboard.products.create', compact('categories'));
+        $users = User::all();
+
+        return view('dashboard.products.create', compact('categories', 'users'));
     }
 
     /**
@@ -65,17 +69,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $user = User::find($request->input('user_id'));
         $product = new Product();
-        $product->name = $request->input('name');
+        $product->name = $user->name;
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->category_id = $request->input('category_id');
-        if ($request->file('image') !== null) {
-            $image = $request->file('image')->store('public/products');
-            $product->image = basename($image);
-        } else {
-            $product->image = '';
-        }
+        $product->user_id = $request->input('user_id');
+        // if ($request->file('image') !== null) {
+        //     $image = $request->file('image')->store('public/products');
+        //     $product->image = basename($image);
+        // } else {
+        //     $product->image = '';
+        // }
         $product->save();
 
         return redirect()->route('dashboard.products.index');
@@ -102,6 +108,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
+        //$payment = Payment::all()->where('product_id', $product->id);
+
         return view('dashboard.products.edit', compact('product', 'categories'));
     }
 
@@ -114,11 +122,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->name = $request->input('name');
+        $product->name = $request->input('h_name');
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->category_id = $request->input('category_id');
-        $product->deposit = $request->input('deposit');
+//        $product->deposit = $request->input('deposit');
         // if ($request->file('image') !== null) {
         //     $image = $request->file('image')->store('public/products');
         //     $product->image = basename($image);

@@ -12,7 +12,6 @@
 */
 Route::get('/', 'WebController@index');
 Route::post('/add_schedule', 'WebController@add_schedule')->name('add_schedule');
-Route::get('/moto', 'WebController@moto');
 
 Route::get('users/mypage', 'UserController@mypage')->name('mypage');
 Route::get('users/mypage/edit', 'UserController@edit')->name('mypage.edit');
@@ -29,6 +28,10 @@ Route::get('products/{product}/favorite', 'ProductController@favorite')->name('p
 
 Route::get('products', 'ProductController@index')->name('products.index');
 Route::get('products/{product}', 'ProductController@show')->name('products.show');
+
+Route::get('payments/{payment}/create', 'PaymentController@create');
+Route::post('payments', 'PaymentController@store');
+Route::get('payments/{user_id}', 'PaymentController@show')->name('payments.show');;
 
 Auth::routes(['verify' => true]);
 

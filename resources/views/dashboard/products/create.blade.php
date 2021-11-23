@@ -10,7 +10,11 @@
           {{ csrf_field() }}
           <div class="form-inline mt-4 mb-4 row">
               <label for="product-name" class="col-2 d-flex justify-content-start">顧客名</label>
-              <input type="text" name="name" id="product-name" class="form-control col-8">
+              <select name="user_id" class="form-control col-8" id="product-name">
+                  @foreach ($users as $user)
+                  <option value="{{ $user->id }}">{{ $user->name }}</option>
+                  @endforeach
+              </select>
           </div>
           <div class="form-inline mt-4 mb-4 row">
               <label for="product-price" class="col-2 d-flex justify-content-start">価格</label>
@@ -34,7 +38,7 @@
               <textarea name="description" id="product-description" class="form-control col-8" rows="10"></textarea>
           </div>
           <div class="d-flex justify-content-end">
-              <button type="submit" class="w-25 btn samazon-submit-button">商品を登録</button>
+              <button type="submit" class="w-25 btn btn-danger">商品を登録</button>
           </div>
       </form>
   

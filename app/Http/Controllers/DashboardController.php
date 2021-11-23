@@ -10,12 +10,12 @@ class DashboardController extends Controller
 {
     public function index(Schedule $schedule)
     {
-        // $user = User::find(Auth::user()->id);
-        // $user_name = $user->name;
+        $fromday = date("Y-m-d H:i");
+        $today = date("Y-m-d H:i", strtotime("1 month"));
+        $schedules = Schedule::whereBetween('schedule', [$fromday, $today])
+                               ->orderBy('schedule', 'asc')
+                               ->paginate(10);
 
-        $schedules = Schedule::all();
-
-        //$schedules = Schedule::where('user.id', 'user_id')->get();
         return view('dashboard.index', compact('schedules'));
     }
 }

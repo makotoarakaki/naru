@@ -10,8 +10,9 @@
           {{ csrf_field() }}
           <input type="hidden" name="_method" value="PUT">
           <div class="form-inline mt-4 mb-4 row">
-              <label for="product-name" class="col-2 d-flex justify-content-start">商品名</label>
-              <input type="text" name="name" id="product-name" class="form-control col-8" value="{{ $product->name }}">
+              <label for="product-name" class="col-2 d-flex justify-content-start">顧客名</label>
+              <input type="text" name="name" id="product-name" class="form-control col-8" value="{{ $product->name }}" disabled>
+              <input type="hidden" name="h_name" value="{{ $product->name }}">
           </div>
           <div class="form-inline mt-4 mb-4 row">
               <label for="product-price" class="col-2 d-flex justify-content-start">価格</label>
@@ -30,8 +31,12 @@
               </select>
           </div>
           <div class="form-inline mt-4 mb-4 row">
-              <label for="product-deposit" class="col-2 d-flex justify-content-start">支払い済</label>
-              <input type="number" name="deposit" id="product-deposit" class="form-control col-8" value="{{ $product->deposit }}">
+            {{ csrf_field() }}
+            <label for="product-deposit" class="col-2 d-flex justify-content-start">入金済</label>
+            <input type="number" name="deposit" id="product-deposit" class="form-control col-6" value="{{ $product->deposit }}" disabled>
+            <div class="class=form-control col-2 input-group-append">
+                <a href="/payments/{{ $product->id }}/create" class="btn btn-primary">入金を更新</a>
+            </div>
           </div>
           <!-- <div class="form-inline mt-4 mb-4 row">
               <label class="col-2 d-flex justify-content-start">画像</label>
@@ -70,7 +75,30 @@
               <button type="submit" class="w-25 btn samazon-submit-button">更新</button>
           </div>
       </form>
-  
+      <!-- <div class="d-flex flex-row bd-highlight mt-3 mb-3">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>金 額</th><th>入金済</th><th>残額</th>
+                </tr>
+            </thead>
+            <tbody>
+                //@if(!is_null($payment))
+                <tr>
+                    <td>
+                        //{{ number_format($payment->price) }}
+                    </td>
+                    <td>
+                        //{{ number_format($payment->deposit) }}
+                    </td>
+                    <td>
+                        //{{ number_format($payment->price - $payment->deposit) }}
+                    </td>
+                </tr>
+                //@endif
+            </tbody>
+        </table>
+      </div> -->
       <div class="d-flex justify-content-end">
           <a href="/dashboard/products">商品一覧に戻る</a>
       </div>

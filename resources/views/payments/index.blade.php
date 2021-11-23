@@ -5,7 +5,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>名前</th><th>日付</th><th>今月の意気込み</th><th>特に力を入れたいこと</th>
+      <th>No.</th><th>日付</th><th>入金額</th>
     </tr>
   </thead>
   <tbody>
@@ -19,9 +19,6 @@
      </td>
      <td>
         {{$schedule->best}}
-     </td>
-     <td>
-        {{$schedule->power}}
      </td>
   </tr>
   @endforeach
