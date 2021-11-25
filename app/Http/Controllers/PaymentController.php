@@ -72,4 +72,16 @@ class PaymentController extends Controller
         return view('payments.show', compact('payments', 'price'));
     }
 
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Payment $payment)
+    {
+        $payment->delete();
+
+        return redirect()->route('payments.show', $payment->user_id);
+    }
 }

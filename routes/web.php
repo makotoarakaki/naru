@@ -29,9 +29,12 @@ Route::get('products/{product}/favorite', 'ProductController@favorite')->name('p
 Route::get('products', 'ProductController@index')->name('products.index');
 Route::get('products/{product}', 'ProductController@show')->name('products.show');
 
-Route::get('payments/{payment}/create', 'PaymentController@create');
-Route::post('payments', 'PaymentController@store');
-Route::get('payments/{user_id}', 'PaymentController@show')->name('payments.show');;
+Route::get('payments/{payment}/create', 'PaymentController@create')->middleware('auth:admins');
+Route::post('payments', 'PaymentController@store')->middleware('auth:admins');
+Route::get('payments/{user_id}', 'PaymentController@show')->name('payments.show')->middleware('auth:admins');
+//Route::delete('payments/delete', 'PaymentController@destroy')->name('payments.destroy')->middleware('auth:admins');
+Route::resource('payments', 'PaymentController')->middleware('auth:admins');
+
 
 Auth::routes(['verify' => true]);
 

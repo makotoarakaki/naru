@@ -42,7 +42,6 @@
                 <th scope="col">顧客名</th>
                 <th scope="col">価格</th>
                 <th scope="col">サービス名</th>
-                <th scope="col">支払い済</th>
                 <th scope="col">備考</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -62,7 +61,6 @@
                 <td>{{ $product->name }}</td>
                 <td>{{ number_format($product->price) }}</td>
                 <td>{{ $product->category["name"] }}</td>
-                <td>{{ number_format($product->deposit) }}</td>
                 <td>{{ $product->description }}</td>
                 <!-- <td>{{ $product->category["major_category_name"] }}</td> -->
                 <td>

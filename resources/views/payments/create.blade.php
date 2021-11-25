@@ -37,6 +37,18 @@
           <td>
               {{$payment->deposit}}
           </td>
+          <td>
+            <a href="/payments/{{ $payment->id }}" onclick="event.preventDefault(); document.getElementById('payment-form{{ $payment->id }}').submit();" class="text-danger">
+                削除
+            </a>
+
+            <form id="payment-form{{ $payment->id }}" action="/payments/{{ $payment->id }}" method="POST" style="display: none;">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+                <!-- <button type="submit" class="btn btn-danger">削除</button> -->
+
+            </form>
+          </td>
         </tr>
         <?php  $cnt++;  ?>
         @endforeach
