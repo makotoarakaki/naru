@@ -49,4 +49,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::resource('categories', 'Dashboard\CategoryController')->middleware('auth:admins');
     Route::resource('products', 'Dashboard\ProductController')->middleware('auth:admins');
     Route::resource('users', 'Dashboard\UserController')->middleware('auth:admins');
+    Route::resource('contracts', 'Dashboard\ContractController')->middleware('auth:admins');
+    Route::get('contracts{contract}/edit', 'Dashboard\ContractController@edit')->name('contract.edit')->middleware('auth:admins');
+//    Route::post('contracts/upload', 'Dashboard\ContractController@upload')->middleware('auth:admins');
 });

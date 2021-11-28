@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('price')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->string('image');
             $table->timestamps();
         });
     }
