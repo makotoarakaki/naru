@@ -8,6 +8,7 @@ class Contract extends Model
 {
     protected $fillable = [
         'name',
+        'mail',
         'status',
         'rejection',
         'image',

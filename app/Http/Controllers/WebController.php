@@ -8,17 +8,27 @@ use Illuminate\Http\Request;
 use Spatie\GoogleCalendar\Event;
 use App\Category;
 use App\Schedule;
+use App\Contract;
 
 class WebController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        
         $categories = Category::all()->sortBy('major_category_name');
 
         $major_category_names = Category::pluck('major_category_name')->unique();
 
         if(Auth::user()) {
-            return view('web.index', compact('major_category_names', 'categories'));
+            //契約提携済か確認
+            $user = Auth::user();
+            $contract = Contract::find($user->contract_id);
+            
+            if(isset($contract) && $contract->status === 1) {
+                return redirect()->route('contract', $user->contract_id);
+            } else {
+                return view('web.index', compact('major_category_names', 'categories'));
+            }
         } else {
             return view('home');
         }
@@ -55,5 +65,29 @@ class WebController extends Controller
         $send_reserve->reserve($sschedule);
 
         return view('web.index', compact('major_category_names', 'categories'));
+    }
+
+    public function contract($id)
+    {
+        if(Auth::user()) {
+            $contract = Contract::find($id);
+        } else {
+            return redirect()->route('login', ['contract_id' => $id]);
+        }
+
+        return view('web.contract', compact('contract'));
+    }
+
+    public function contract_comp($id)
+    {
+        $contract = Contract::find($id);
+        $contract->status = 2;
+        $contract->save();
+
+        // 管理者へのメール送信
+        $send_complete = app()->make('App\Http\Controllers\ContractEmailController');
+        $send_complete->complete(Auth::user()->name);
+
+        return view('web.show', compact('contract'));
     }
 }

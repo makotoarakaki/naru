@@ -71,6 +71,9 @@ class ContractController extends Controller
     {
         //ファイル名を取得
         $filename = $request->file('image')->getClientOriginalName();
+        //ファイル名を変更
+        // $filename = rename($request->file('image')->getClientOriginalName(), str_shuffle($filename).'.pdf');
+        // dd($filename);
         // ステータスを１へ
         $contract->status = 1;
         $contract->image = $filename;
@@ -106,6 +109,11 @@ class ContractController extends Controller
      */
     public function edit(Contract $contract)
     {
+        // $file= public_path("public/storage/".$contract->id.'/'.$contract->image);
+        // $headers = [
+        //     'Content-Type' => 'application/pdf',
+        //     'Content-Disposition' => 'inline; '.$contract->image,
+        // ];
         return view('dashboard.contracts.edit', compact('contract'));
     }
 
@@ -118,7 +126,13 @@ class ContractController extends Controller
      */
     public function update(Request $request, Contract $contract)
     {
-        //
+        $contract->fill($request->all())->save();
+
+        // お客様への契約メール送信
+        $send_contract = app()->make('App\Http\Controllers\ContractEmailController');
+        $send_contract->send($request->id, $request->mail, $request->name);        
+
+        return redirect()->route('dashboard.contracts.index');
     }
 
     /**

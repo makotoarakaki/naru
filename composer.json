@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.0",
         "kyslik/column-sortable": "^6.3",
         "laravel/framework": "6.11.0",
+        "laravel/helpers": "^1.4",
         "laravel/tinker": "^1.0",
         "nesbot/carbon": "^2.35",
         "overtrue/laravel-favorite": "2.0.3",

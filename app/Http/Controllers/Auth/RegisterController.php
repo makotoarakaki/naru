@@ -29,7 +29,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/email/verify';
-
+    
     /**
      * Create a new controller instance.
      *
@@ -73,6 +73,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
+            'contract_id' => $data['contract_id'],
         ]);
     }
 }

@@ -12,6 +12,10 @@
 */
 Route::get('/', 'WebController@index');
 Route::post('/add_schedule', 'WebController@add_schedule')->name('add_schedule');
+Route::get('/contract/{id}', 'WebController@contract')->name('contract');
+Route::post('/contract_comp/{id}', 'WebController@contract_comp')->name('contract_comp');
+
+//Route::post('auth/register', 'Auth\RegisterController@store')->name('auth.register');
 
 Route::get('users/mypage', 'UserController@mypage')->name('mypage');
 Route::get('users/mypage/edit', 'UserController@edit')->name('mypage.edit');
@@ -44,7 +48,7 @@ Route::get('/dashboard', 'DashboardController@index')->middleware('auth:admins')
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('login', 'Dashboard\Auth\LoginController@showLoginForm')->name('login');
-    Route::post('login', 'Dashboard\Auth\LoginController@login')->name('login');
+    Route::post('login', 'Dashboard\Auth\LoginController@login')->name('dashboard.login');
     Route::resource('major_categories', 'Dashboard\MajorCategoryController')->middleware('auth:admins');
     Route::resource('categories', 'Dashboard\CategoryController')->middleware('auth:admins');
     Route::resource('products', 'Dashboard\ProductController')->middleware('auth:admins');

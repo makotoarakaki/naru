@@ -50,7 +50,7 @@
     </div>
       </div>
       <div class="d-flex justify-content-end mx-5">
-      <a href="/dashboard/products">商品一覧に戻る</a>
+      <a href="/dashboard">戻る</a>
   </div>
   </div>
 @endsection
