@@ -46,7 +46,7 @@
                     <form action="/dashboard/users/{{ $user->id }}" method="POST">
                         @csrf
                         <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn dashboard-delete-link">削除</button>
+                        <button type="submit" class="btn text-danger">削除</button>
                     </form>
                     @endif
                 </td>

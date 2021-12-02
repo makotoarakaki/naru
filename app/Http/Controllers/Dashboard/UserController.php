@@ -27,4 +27,18 @@ class UserController extends Controller
         }
         return view('dashboard.users.index', compact('users', 'keyword'));
     }
+
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Notification  $notification
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect()->route('dashboard.users.index');
+    }
+
 }

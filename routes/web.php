@@ -39,7 +39,6 @@ Route::get('payments/{user_id}', 'PaymentController@show')->name('payments.show'
 //Route::delete('payments/delete', 'PaymentController@destroy')->name('payments.destroy')->middleware('auth:admins');
 Route::resource('payments', 'PaymentController')->middleware('auth:admins');
 
-
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -55,5 +54,5 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::resource('users', 'Dashboard\UserController')->middleware('auth:admins');
     Route::resource('contracts', 'Dashboard\ContractController')->middleware('auth:admins');
     Route::get('contracts{contract}/edit', 'Dashboard\ContractController@edit')->name('contract.edit')->middleware('auth:admins');
-//    Route::post('contracts/upload', 'Dashboard\ContractController@upload')->middleware('auth:admins');
+    Route::resource('notifications', 'Dashboard\NotificationController')->middleware('auth:admins');
 });
