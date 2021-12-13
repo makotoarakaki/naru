@@ -46,4 +46,9 @@ class LoginController extends Controller
              return redirect()->route('login')->with('warning', '退会済みのアカウントです！');;
          }
      }
-}
+ 
+     public function showLoginForm()
+     {
+         return view('auth.login');
+     }
+ }

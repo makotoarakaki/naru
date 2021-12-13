@@ -15,7 +15,9 @@
             <hr>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-                <input id="contract_id" type="hidden" name="contract_id" value="{{ $contract_id }}">
+                @if(isset( $contract_id ))
+                    <input id="contract_id" type="hidden" name="contract_id" value="{{  $contract_id  }}">
+                @endif
                 <div class="form-group">
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror samazon-login-input" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="メールアドレス">
 

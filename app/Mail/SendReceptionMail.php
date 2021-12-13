@@ -17,9 +17,11 @@ class SendReceptionMail extends Mailable
      *
      * @return void
      */
-    public function __construct($schedule)
+    public function __construct($schedule, $schedule2, $schedule3)
     {
         $this->schedule = $schedule;
+        $this->schedule2 = $schedule2;
+        $this->schedule3 = $schedule3;
     }
 
     /**
@@ -32,11 +34,17 @@ class SendReceptionMail extends Mailable
         $email = Auth::user()->email;
         $name = Auth::user()->name;
         $from = config('app.from_mail'); // config.app.phpで定義した値を取得
-
         return $this->to($email)
                     ->from($from)
                     ->view('emails.reception')
-                    ->with(['name' => $name, 'schedule' => $this->schedule])
+                    ->with(
+                        [
+                            'name' => $name, 
+                            'schedule' => $this->schedule, 
+                            'schedule2' => $this->schedule2, 
+                            'schedule3' => $this->schedule3
+                            ]
+                    )
                     ->subject('【 水江卓也 】予約を受け付けました！');
     }
 }

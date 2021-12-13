@@ -13,7 +13,7 @@ return [
             /*
              * Path to the json file containing the credentials.
              */
-            'credentials_json' => storage_path('app/json/customer-schedule-88e43550c6a7.json'),
+            'credentials_json' => storage_path('app/json/complete-flag-334611-99e7abed2876.json'),
         ],
 
         /*

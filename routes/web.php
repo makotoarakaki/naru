@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('auth.login');
 Route::get('/', 'WebController@index');
 Route::post('/add_schedule', 'WebController@add_schedule')->name('add_schedule');
 Route::get('/contract/{id}', 'WebController@contract')->name('contract');
@@ -44,6 +45,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', 'DashboardController@index')->middleware('auth:admins');
+Route::get('/dashboard/{user_id}', 'DashboardController@show')->name('dashboard.show');
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('login', 'Dashboard\Auth\LoginController@showLoginForm')->name('login');

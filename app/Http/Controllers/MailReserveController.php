@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class MailReserveController extends Controller
 {
-    public function reserve($schedule) {
-        $date = date_create($schedule);
-        $df_schedule = date_format($date, 'Y年m月d日H時i分');
+    public function reserve() {
+        // $date = date_create($schedule);
+        // $df_schedule = date_format($date, 'Y年m月d日H時i分');
 
-        Mail::send(new SendReserveMail($df_schedule));
+        Mail::send(new SendReserveMail());
     }
 
 }

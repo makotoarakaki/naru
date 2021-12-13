@@ -135,8 +135,24 @@
                                                 {{ csrf_field() }}
                                                 <div class="form-group">
                                                     <div class="input-group date" id="datePicker" data-target-input="nearest">                                                        
-                                                        <input type="datetime" name="schedule" required class="form-control form-control-sm datetimepicker-input" data-target="#datePicker" placeholder="日程を入力"/>
+                                                        <input type="datetime" name="schedule" required class="form-control form-control-sm datetimepicker-input" data-target="#datePicker" placeholder="第一希望日"/>
                                                         <div class="input-group-append" data-target="#datePicker" data-toggle="datetimepicker">
+                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group date" id="datePicker2" data-target-input="nearest">                                                        
+                                                        <input type="datetime" name="schedule2" class="form-control form-control-sm datetimepicker-input" data-target="#datePicker2" placeholder="第二希望日"/>
+                                                        <div class="input-group-append" data-target="#datePicker2" data-toggle="datetimepicker">
+                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group date" id="datePicker3" data-target-input="nearest">                                                        
+                                                        <input type="datetime" name="schedule3" class="form-control form-control-sm datetimepicker-input" data-target="#datePicker3" placeholder="第三希望日"/>
+                                                        <div class="input-group-append" data-target="#datePicker3" data-toggle="datetimepicker">
                                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                                         </div>
                                                     </div>
@@ -166,11 +182,10 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body g-calendar">
-                                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FTokyo&showPrint=0&showCalendars=0&showDate=1&showNav=1&src=YXJha2FraWNvbnN1bEBnbWFpbC5jb20&src=bDBhcHAzOTJ1bm03YTdmaGR2MHMwZ3VmdW9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=amEuamFwYW5lc2UjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%23F6BF26&color=%2333B679&color=%230B8043" style="border:solid 1px #777" frameborder="0" scrolling="no"></iframe>                                    
+                                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FTokyo&showPrint=0&showTabs=0&src=Y2xpZW50a2FucmkwMDFAZ21haWwuY29t&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=amEuamFwYW5lc2UjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%2333B679&color=%230B8043" style="border:solid 1px #777" frameborder="0" scrolling="no"></iframe>                                    
                                 </div>
                             </div>
                         </div>
-                    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -199,6 +214,12 @@
     <script>
     $(function(){
         $('#schedule').datetimepicker({locale: 'ja', dayViewHeaderFormat: 'YYYY年M月' ,format: 'YYYY/MM/DD'});
+    });
+    $(function(){
+        $('#schedule2').datetimepicker({locale: 'ja', dayViewHeaderFormat: 'YYYY年M月' ,format: 'YYYY/MM/DD'});
+    });
+    $(function(){
+        $('#schedule3').datetimepicker({locale: 'ja', dayViewHeaderFormat: 'YYYY年M月' ,format: 'YYYY/MM/DD'});
     });
     </script>
 </body>

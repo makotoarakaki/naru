@@ -17,9 +17,9 @@ class SendReserveMail extends Mailable
      *
      * @return void
      */
-    public function __construct($schedule)
+    public function __construct()
     {
-        $this->schedule = $schedule;
+
     }
 
     /**
@@ -29,13 +29,15 @@ class SendReserveMail extends Mailable
      */
     public function build()
     {
+        $id = Auth::user()->id;
         $name = Auth::user()->name;
         $from = config('app.from_mail'); // config.app.phpで定義した値を取得
+        $schedule = url('/dashboard/'.$id, null, true);
 
         return $this->to($from)
                     ->from($from)
                     ->view('emails.reserve')
-                    ->with(['name' => $name, 'schedule' => $this->schedule])
+                    ->with(['name' => $name, 'schedule' => $schedule])
                     ->subject('コンサル予約のお知らせです');
     }
 }
