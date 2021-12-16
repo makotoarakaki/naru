@@ -32,7 +32,7 @@ class SendReserveMail extends Mailable
         $id = Auth::user()->id;
         $name = Auth::user()->name;
         $from = config('app.from_mail'); // config.app.phpで定義した値を取得
-        $schedule = url('/dashboard/'.$id, null, true);
+        $schedule = url('/dashboard/conf/'.$id, null, true);
 
         return $this->to($from)
                     ->from($from)

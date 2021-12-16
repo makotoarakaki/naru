@@ -44,11 +44,13 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard/login', 'Dashboard\Auth\LoginController@showLoginForm')->name('dashboard.login');
+//Route::get('/dashboard/auth/login', 'Dashboard\Auth\LoginController@showLoginForm')->name('dashboard.login');
 Route::get('/dashboard', 'DashboardController@index')->middleware('auth:admins');
-Route::get('/dashboard/{user_id}', 'DashboardController@show')->name('dashboard.show');
+Route::get('/dashboard/conf/{user_id}', 'DashboardController@show')->name('dashboard.show');
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
+    Route::get('login', 'Dashboard\Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'Dashboard\Auth\LoginController@login')->name('dashboard.login');
     Route::resource('major_categories', 'Dashboard\MajorCategoryController')->middleware('auth:admins');
     Route::resource('categories', 'Dashboard\CategoryController')->middleware('auth:admins');
     Route::resource('products', 'Dashboard\ProductController')->middleware('auth:admins');

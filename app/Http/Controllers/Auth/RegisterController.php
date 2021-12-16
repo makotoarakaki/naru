@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
-            'contract_id' => empty($data['contract_id']) ? 0: $data['contract_id'],
+            'contract_id' => is_null($data['contract_id']) ? 0: $data['contract_id'],
         ]);
     }
 }
