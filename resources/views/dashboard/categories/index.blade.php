@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="w-75">
+<h1>カテゴリ登録</h1>
     <form method="POST" action="/dashboard/categories">
         {{ csrf_field() }}
         <div class="form-group">
@@ -14,11 +15,11 @@
         </div>
         <div class="form-group">
         <label for="category-major-category">親カテゴリ名</label>
-　           <select name="major_category_id" class="form-control col-8" id="category-major-category">
-　               @foreach ($major_categories as $major_category)
-　                  <option value="{{ $major_category->id }}">{{ $major_category->name }}</option>
-　               @endforeach
-　           </select>
+           <select name="major_category_id" class="form-control col-8" id="category-major-category">
+               @foreach ($major_categories as $major_category)
+                  <option value="{{ $major_category->id }}">{{ $major_category->name }}</option>
+               @endforeach
+           </select>
         </div>
         <button type="submit" class="btn samazon-submit-button">＋新規作成</button>
     </form>

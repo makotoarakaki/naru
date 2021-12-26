@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="w-75">
+    <h1>親カテゴリ登録</h1>
+
     <form method="POST" action="/dashboard/major_categories">
         {{ csrf_field() }}
         <div class="form-group">

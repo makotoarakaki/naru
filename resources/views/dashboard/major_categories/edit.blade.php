@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="w-75">
-    <h1>カテゴリ情報更新</h1>
+    <h1>親カテゴリ編集</h1>
 
     <form method="POST" action="/dashboard/major_categories/{{ $major_category->id }}" class="mb-4">
         {{ csrf_field() }}
@@ -15,7 +15,7 @@
             <label for="major-category-description">カテゴリの説明</label>
             <textarea name="description" id="major-category-description" class="form-control">{{ $major_category->description }}</textarea>
         </div>
-        <button type="submit" class="btn btn-danger">更新</button>
+        <button type="submit" class="btn samazon-submit-button">更新</button>
     </form>
 
     <a href="/dashboard/major_categories">カテゴリ一覧に戻る</a>

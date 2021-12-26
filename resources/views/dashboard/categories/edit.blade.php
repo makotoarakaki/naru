@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="w-75">
-    <h1>カテゴリ情報更新</h1>
+    <h1>カテゴリ編集</h1>
 
     <form method="POST" action="/dashboard/categories/{{ $category->id }}">
         {{ csrf_field() }}
@@ -27,7 +27,7 @@
 　               @endforeach
            </select>
         </div>
-        <button type="submit" class="btn btn-danger">更新</button>
+        <button type="submit" class="btn samazon-submit-button">更新</button>
     </form>
 
     <a href="/dashboard/categories" class="mt-4">カテゴリ一覧に戻る</a>
