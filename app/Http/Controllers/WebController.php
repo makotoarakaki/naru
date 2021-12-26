@@ -42,7 +42,6 @@ class WebController extends Controller
         $dt2 = new Carbon($request->schedule2.'+09:00');
         $dt3 = new Carbon($request->schedule3.'+09:00');
         $schedules = array($dt1, $dt2, $dt3);
-
         foreach($schedules as $schedule) {
             if(isset($schedule)) {
                 $event = new Event;

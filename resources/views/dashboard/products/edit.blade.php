@@ -2,7 +2,7 @@
   
   @section('content')
   <div class="w-50">
-      <h1>商品登録</h1>
+      <h1>商品編集</h1>
   
       <hr>
 

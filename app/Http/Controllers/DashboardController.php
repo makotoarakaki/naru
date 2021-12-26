@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Schedule;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,7 +13,10 @@ class DashboardController extends Controller
     {
         $fromday = date("Y-m-d H:i");
         $today = date("Y-m-d H:i", strtotime("1 month"));
-        $schedules = Schedule::whereBetween('schedule', [$fromday, $today])
+        // ９時間プラス
+        $fm = new Carbon($fromday.'+09:00');
+        $to = new Carbon($today.'+09:00');
+        $schedules = Schedule::whereBetween('schedule', [$fm, $to])
                                ->orderBy('schedule', 'asc')
                                ->paginate(10);
 
