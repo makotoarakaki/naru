@@ -19,12 +19,12 @@
         <label for="category-major-category">親カテゴリ名</label>
             <select name="major_category_id" class="form-control col-8" id="category-major-category">
                 @foreach ($major_categories as $major_category)
-　               @if ($major_category->id == $category->major_category_id)
-　                  <option value="{{ $major_category->id }}" selected>{{ $major_category->name }}</option>
-　               @else
-　                  <option value="{{ $major_category->id }}">{{ $major_category->name }}</option>
-　               @endif
-　               @endforeach
+                    @if ($major_category->id == $category->major_category_id)
+                        <option value="{{ $major_category->id }}" selected>{{ $major_category->name }}</option>
+                    @else
+                    <option value="{{ $major_category->id }}">{{ $major_category->name }}</option>
+                    @endif
+                @endforeach
            </select>
         </div>
         <button type="submit" class="btn samazon-submit-button">更新</button>
