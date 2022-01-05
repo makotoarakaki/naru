@@ -68,7 +68,58 @@
                 </div>
 
                 <hr>
+                <div class="form-group">
+                    <div class="d-flex justify-content-between">
+                        <label for="email" class="text-md-left samazon-edit-user-info-label">郵便番号</label>
+                        <span onclick="switchEditUserInfo('.usePostalCode', '.editPostalCode', '.userPostalCodeEditLabel');" class="userPostalCodeEditLabel user-edit-label">
+                            編集
+                        </span>
+                    </div>
+                    <div class="collapse show usePostalCode">
+                        <h1 class="samazon-edit-user-info-value">{{ $user->postal_code }}</h1>
+                    </div>
+                    <div class="collapse editPostalCode">
+                        <input id="email" type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ $user->postal_code }}" required autocomplete="postal_code" autofocus placeholder="000-0000">
 
+                        <button type="submit" class="btn samazon-submit-button mt-3 w-25">
+                            保存
+                        </button>
+
+                        @error('postal_code')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>郵便番号を入力してください</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <hr>
+                <div class="form-group">
+                    <div class="d-flex justify-content-between">
+                        <label for="email" class="text-md-left samazon-edit-user-info-label">住所</label>
+                        <span onclick="switchEditUserInfo('.useAddress', '.editAddress', '.userAddressCodeEditLabel');" class="userAddressCodeEditLabel user-edit-label">
+                            編集
+                        </span>
+                    </div>
+                    <div class="collapse show useAddress">
+                        <h1 class="samazon-edit-user-info-value">{{ $user->address }}</h1>
+                    </div>
+                    <div class="collapse editAddress">
+                        <input id="email" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $user->address }}" required autocomplete="address" autofocus placeholder="東京都〇〇">
+
+                        <button type="submit" class="btn samazon-submit-button mt-3 w-25">
+                            保存
+                        </button>
+
+                        @error('address')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>住所を入力してください</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <hr>
                 <div class="form-group">
                     <div class="d-flex justify-content-between">
                         <label for="phone" class="text-md-left samazon-edit-user-info-label">電話番号</label>

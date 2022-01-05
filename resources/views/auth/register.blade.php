@@ -51,7 +51,7 @@
                     <label for="password" class="col-md-5 col-form-label text-md-left">住所<span class="ml-1 samazon-require-input-label"><span class="samazon-require-input-label-text">必須</span></span></label>
 
                     <div class="col-md-7">
-                        <input type="text" class="form-control @error('address') is-invalid @enderror samazon-login-input" name="address" required placeholder="東京都渋谷区道玄坂１丁目１１−１">
+                        <input type="text" class="form-control @error('address') is-invalid @enderror samazon-login-input" name="address" required placeholder="東京都渋谷区◯◯◯１丁目１１−１">
                     </div>
                 </div>
 
