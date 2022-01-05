@@ -56,7 +56,11 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
-    'from_mail' => env('MAIL_USERNAME'),
+    'to_mail' => env('MAIL_TO_ADDRESS'),
+
+    'from_mail' => env('MAIL_FROM_ADDRESS'),
+
+    'from_name' => env('MAIL_FROM_NAME'),
 
     /*
     |--------------------------------------------------------------------------

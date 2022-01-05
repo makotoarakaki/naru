@@ -34,7 +34,8 @@ class SendReceptionMail extends Mailable
         $email = Auth::user()->email;
         $name = Auth::user()->name;
         $from = config('app.from_mail'); // config.app.phpで定義した値を取得
-        return $this->to($email)
+        $from_name = config('app.from_name'); // config.app.phpで定義した値を取得
+        return $this->to($email, $from_name)
                     ->from($from)
                     ->view('emails.reception')
                     ->with(

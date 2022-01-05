@@ -31,10 +31,14 @@ class SendReserveMail extends Mailable
     {
         $id = Auth::user()->id;
         $name = Auth::user()->name;
+
+        $to = config('app.to_mail'); // config.app.phpで定義した値を取得
         $from = config('app.from_mail'); // config.app.phpで定義した値を取得
+
         $schedule = url('/dashboard/conf/'.$id, null, true);
 
-        return $this->to($from)
+        return $this->to($to)
+                    ->to($from)
                     ->from($from)
                     ->view('emails.reserve')
                     ->with(['name' => $name, 'schedule' => $schedule])
